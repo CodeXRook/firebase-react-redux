@@ -14,9 +14,11 @@ exports.helloWorld = functions.https.onRequest((request, response) => {
 exports.getScreams = functions.https.onRequest((req, res) => {
 admin.firestore().collection('screams').get()
     .then(data =>{
-        let screams = []
+        let screams = [];
         data.forEach(docs => {
-            
-        })
+            screams.push(doc.data());
+        });
+        return res.json(screams);
     })
-})
+    .catch((err) => console.error(err));
+});
