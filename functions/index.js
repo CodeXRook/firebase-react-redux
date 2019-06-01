@@ -1,5 +1,5 @@
-const functions = require('firebase-functions');
-const admin = require('firebase admin');
+const functions = require("firebase-functions");
+const admin = require("firebase admin");
 
 //Now we have access to admin object
 admin.initializeApp();
@@ -7,18 +7,20 @@ admin.initializeApp();
 // // https://firebase.google.com/docs/functions/write-firebase-functions
 //
 exports.helloWorld = functions.https.onRequest((request, response) => {
- response.send("Hello from Firebase!");
+  response.send("Hello from Firebase!");
 });
 
-
 exports.getScreams = functions.https.onRequest((req, res) => {
-admin.firestore().collection('screams').get()
-    .then(data =>{
-        let screams = [];
-        data.forEach(docs => {
-            screams.push(doc.data());
-        });
-        return res.json(screams);
+  admin
+    .firestore()
+    .collection('screams')
+    .get()
+    .then((data) => {
+      let screams = [];
+      data.forEach(docs => {
+        screams.push(doc.data());
+      });
+      return res.json(screams);
     })
-    .catch((err) => console.error(err));
+    .catch(err => console.error(err));
 });
