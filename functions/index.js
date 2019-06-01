@@ -17,10 +17,10 @@ exports.getScreams = functions.https.onRequest((req, res) => {
     .get()
     .then((data) => {
       let screams = [];
-      data.forEach(docs => {
+      data.forEach((doc)=> {
         screams.push(doc.data());
       });
       return res.json(screams);
     })
-    .catch(err => console.error(err));
+    .catch((err) => console.error(err));
 });
