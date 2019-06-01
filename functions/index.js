@@ -12,5 +12,5 @@ exports.helloWorld = functions.https.onRequest((request, response) => {
 
 
 exports.getScreams = functions.https.onRequest((req, res) => {
-
+admin.firestore().collection('')
 })
