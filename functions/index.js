@@ -24,3 +24,7 @@ exports.getScreams = functions.https.onRequest((req, res) => {
     })
     .catch((err) => console.error(err));
 });
+
+exports.createScream = functions.https.onRequest((req, res) => {
+
+});
