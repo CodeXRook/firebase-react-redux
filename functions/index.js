@@ -1,5 +1,5 @@
 const functions = require("firebase-functions");
-const admin = require("firebase admin");
+const admin = require("firebase-admin");
 
 //Now we have access to admin object
 admin.initializeApp();
