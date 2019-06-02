@@ -17,7 +17,7 @@ exports.getScreams = functions.https.onRequest((req, res) => {
     .get()
     .then((data) => {
       let screams = [];
-      data.forEach((doc)=> {
+      data.forEach((doc) => {
         screams.push(doc.data());
       });
       return res.json(screams);
@@ -29,15 +29,17 @@ exports.createScream = functions.https.onRequest((req, res) => {
     const newScream = {
         body: res.body.body,
         userHandle: req.body.userHandle,
-        createdAt: admin.firestore.Timestamp.fromDate(new Date ())
+        createdAt: admin.firestore.Timestamp.fromDate(new Date())
     };
-    admin.firestore()
+
+    admin
+    .firestore()
     .collection('screams')
     .add(newScream)
-    .then(doc => {
-        res.json({message: `document ${doc.id} created successfully`});
+    .then((doc) => {
+        res.json({ message: `document ${doc.id} created successfully`});
     })
-    .catch(err => {
+    .catch((err) => {
         res.status(500).json({error: 'something went wrong'});
         console.error(err);
     });
