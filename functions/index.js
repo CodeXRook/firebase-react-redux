@@ -35,6 +35,6 @@ exports.createScream = functions.https.onRequest((req, res) => {
     .collection('screams')
     .add(newScream)
     .then(doc => {
-        res.json({message: `document $doc.id`})
+        res.json({message: `document ${doc.id} created successfully`});
     })
 });
