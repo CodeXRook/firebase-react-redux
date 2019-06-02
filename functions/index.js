@@ -34,5 +34,7 @@ exports.createScream = functions.https.onRequest((req, res) => {
     admin.firestore()
     .collection('screams')
     .add(newScream)
-    .then
+    .then(doc => {
+        res.json({message: `document $doc.id`})
+    })
 });
