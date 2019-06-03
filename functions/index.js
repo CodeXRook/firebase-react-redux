@@ -31,7 +31,6 @@ exports.createScream = functions.https.onRequest((req, res) => {
         userHandle: req.body.userHandle,
         createdAt: admin.firestore.Timestamp.fromDate(new Date())
     };
-
     admin
     .firestore()
     .collection('screams')
